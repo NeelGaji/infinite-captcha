@@ -1,0 +1,119 @@
+/* 1. The Full Screen "White Out" Blocker */
+#stupid-captcha-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.95); /* 95% Opaque White */
+    z-index: 2147483647;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(5px); /* Blurs the website behind it */
+}
+
+/* 2. The Main Captcha Box (Centered) */
+#stupid-captcha-box {
+    width: 380px;
+    background: #f9f9f9;
+    border: 1px solid #d3d3d3;
+    border-radius: 3px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    padding: 15px;
+    font-family: 'Roboto', Arial, sans-serif;
+    user-select: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 3. The "Select Images" Challenge Modal (Hidden by default) */
+#stupid-image-challenge {
+    display: none; /* Hidden until checkbox is clicked */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    background: #fff;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    border: 1px solid #ccc;
+    z-index: 2147483648;
+    padding: 10px;
+}
+
+/* Challenge Header */
+.challenge-header {
+    background-color: #3f51b5; /* Google Blue */
+    color: white;
+    padding: 15px;
+    margin: -10px -10px 10px -10px;
+}
+.challenge-header h2 { margin: 0; font-size: 16px; font-weight: bold; }
+.challenge-header p { margin: 5px 0 0; font-size: 24px; font-weight: bold; }
+
+/* The 3x3 Grid */
+.challenge-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.challenge-img {
+    width: 100%;
+    height: 100px;
+    background-color: #ddd;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.challenge-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Selection State (The Checkmark) */
+.challenge-img.selected::after {
+    content: '✓';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: #3f51b5;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* Verify Button */
+.verify-btn {
+    background-color: #4285f4;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-weight: bold;
+    float: right;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 2px;
+}
+.verify-btn:hover { background-color: #357ae8; }
+
+/* The Standard Checkbox Styles (Kept from before) */
+.captcha-checkbox {
+    width: 24px;
+    height: 24px;
+    background: #fff;
+    border: 2px solid #c1c1c1;
+    border-radius: 2px;
+    margin-right: 12px;
+    cursor: pointer;
+}
+.captcha-label { font-size: 14px; color: #282828; }
+.captcha-logo { opacity: 0.5; text-align: center; font-size: 10px; }

@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Human Verification System",
+  "version": "1.0",
+  "description": "A mandatory verification step for the modern web.",
+  "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "css": ["styles.css"]
+    }
+  ]
+}
